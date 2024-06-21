@@ -1,13 +1,16 @@
 /*
- * @lc app=leetcode id=290 lang=java
+ * @lc app=leetcode id=291 lang=java
  *
- * [290] Word Pattern
+ * [291] Word Pattern II
  */
 
 // @lc code=start
 class Solution {
-    public boolean wordPattern(String pattern, String s) {
-        String[] words = s.split(" ");
+    // 291 和290的差别在于， 291 是需要把S 切分成不同的word，空间复杂度为O(m), 290 是需要把S 切分成不同的word，空间复杂度为O(1)
+    
+    public boolean wordPatternMatch(String pattern, String s) {
+        
+      String[] words = s.split(" ");
 
         if (words.length != pattern.length()) {
             return false;
@@ -35,6 +38,6 @@ class Solution {
         }
         return true;
     }
-
 }
 // @lc code=end
+

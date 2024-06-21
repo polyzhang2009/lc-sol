@@ -21,8 +21,32 @@
  * }
  */
 class Solution {
-    // dfs
+
+
     public List<List<Integer>> levelOrder(TreeNode root) {
+        // BFS - using queue
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root == null) return res;
+        queue.offer(root);
+
+        while(!queue.isEmpty()) {
+            int levelNum = queue.size();
+            List<Integer> levelList = new LinkedList<>();
+            for (int i = 0; i < levelNum; i++) {
+                if (queue.peek().left != null) 
+                    queue.offer(queue.peek().left);
+                if (queue.peek().right != null)
+                    queue.offer(queue.peek().right);
+                levelList.add(queue.poll().val);
+            }
+            res.add(levelList);
+        }
+        return res;
+    }
+
+    // dfs
+    public List<List<Integer>> levelOrderDfs(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
 
         levelHelper(res, root, 0); // height
